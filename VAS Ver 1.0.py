@@ -1,4 +1,5 @@
 ###############
+#imports#
 import time
 import tkinter as tk
 import tkinter.ttk as ttk
@@ -36,21 +37,14 @@ slot20 = [1350, 1000]
 a = 920
 b = 1000
 #####################
-
-
-#####################
+#vars#
 screen_res = int
 char_val = ['slot1', 'slot2', 'slot3', 'slot4', 'slot5', 'slot6', 'slot7', 'slot8', 'slot9', 'slot10', 'slot11', 'slot12', 'slot13', 'slot14', 'slot15', 'slot16', 'slot17', 'slot18', 'slot19', 'slot20', 'slot21']
 #pos = ""
 piss = ""
 selected_char_val = str
-
-
-
-
-
-
-
+#####################
+#GUI#
 class NewprojectApp:
     def __init__(self, master=None):
         # build ui
@@ -94,15 +88,7 @@ class NewprojectApp:
         text1.pack(side="top")
 
 ###################
-        
-        
-        
-        
-####################
-
-
-########################
-        # Main widget
+#Main widgets#
         self.mainwindow = toplevel1
 
     def run(self):
@@ -190,7 +176,8 @@ class NewprojectApp:
             print("screen_res is", screen_res,"selected char val is", selected_char_val,"piss value is", piss,"new position is", pos)
         else:
             print("nothing here")
-        
+######################
+#loop#
         i = 1
         time.sleep(5)
         for i in range (10000):
@@ -198,15 +185,11 @@ class NewprojectApp:
             pyautogui.click()
             pyautogui.moveTo(select_agent)
             pyautogui.click()
-            print("script has looped for:", i + 1, "Times")
-            print("<3")
+            #print("script has looped for:", i + 1, "Times")
+            #print("<3")
             if keyboard.is_pressed('esc'):
                 break
 
-
-
-
-    
 if __name__ == "__main__":
     app = NewprojectApp()
     app.run()
