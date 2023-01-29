@@ -39,6 +39,7 @@ slot19 = [1250, 1000]
 slot20 = [1350, 1000]
 a = 920
 b = 1000
+
 #####################
 #vars#
 screen_res = int
@@ -55,24 +56,30 @@ class NewprojectApp:
         toplevel1.configure(height=430, width=350)
         toplevel1.geometry("430x350")
         toplevel1.wm_title("Valorant Auto Select Ver:1.0")
+
         self.combobox1 = Combobox(toplevel1)
         self.combobox1.configure(values='1080p 1440p 4k')
         self.combobox1.pack(side="top")
+
         button1 = ttk.Button(toplevel1)
         button1.configure(text='Confirm Screen Res')
         button1.pack(side="top")
         button1.configure(command=self.on_button_res)
+
         self.combobox2 = ttk.Combobox(toplevel1)
-        self.combobox2.configure(validate="none", values='slot1 slot2 slot3 slot4 slot5 slot6 slot7 slot8 slot9 slot10 slot11 slot12 slot13 slot14 slot15 slot16 slot17 slot18 slot19 slot20')
+        self.combobox2.configure(validate="none", values=char_val)
         self.combobox2.pack(side="top")
+
         button2 = ttk.Button(toplevel1)
         button2.configure(text='Confirm Agent')
         button2.pack(side="top")
         button2.configure(command=self.on_button_char)
+
         button3 = ttk.Button(toplevel1)
         button3.configure(text='Lock In')
         button3.pack(side="top")
         button3.configure(command=self.on_lock_in)
+
         text1 = tk.Text(toplevel1)
         text1.configure(
             borderwidth=5,
@@ -86,7 +93,12 @@ class NewprojectApp:
             tabstyle="tabular",
             takefocus=True,
             undo="false")
-        _text_ = 'DISCLAIMER:\nUse this softwear at your own risk. I do NOT take any responsibility for whatever happens to you or your account.\n\nRead the "READ ME" file to understand how to use this'
+        _text_ = (
+            "DISCLAIMER:\n"
+            "Use this softwear at your own risk. I do NOT take any responsibility for whatever happens to you or your account.\n"
+            "\n"
+            "Read the \"READ ME\" file to understand how to use this"
+        )
         text1.insert("0.0", _text_)
         text1.pack(side="top")
 
@@ -174,6 +186,8 @@ class NewprojectApp:
             print(f"Screen res is: {screen_res} Selected char val is: {selected_char_val} \"select_agent_pos\" value is: {self.select_agent_pos} New position is: {pos}")
         else:
             print("Screen resolution wasn't set!")
+
+        ######################
 #loop#
         time.sleep(5)
         for i in range (10000):
