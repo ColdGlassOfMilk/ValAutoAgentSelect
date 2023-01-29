@@ -7,12 +7,15 @@ from pygubu.widgets.combobox import Combobox
 import pyautogui
 import keyboard
 from tkinter import PhotoImage
-from PIL import Image, ImageTk
+# from PIL import Image, ImageTk
+
 #########################
+# pyautogui settings
 pyautogui.PAUSE = .001
 pyautogui.FAILSAFE = True
+
 #########################
-#agent positions#
+# agent positions
 select_agent = [960, 830]
 slot1 = [580, 920]
 slot2 = [660, 920]
@@ -40,13 +43,13 @@ b = 1000
 #vars#
 screen_res = int
 char_val = ['slot1', 'slot2', 'slot3', 'slot4', 'slot5', 'slot6', 'slot7', 'slot8', 'slot9', 'slot10', 'slot11', 'slot12', 'slot13', 'slot14', 'slot15', 'slot16', 'slot17', 'slot18', 'slot19', 'slot20', 'slot21']
-#pos = ""
-piss = ""
-selected_char_val = str
+
 #####################
 #GUI#
 class NewprojectApp:
     def __init__(self, master=None):
+        self.select_agent_pos = [580, 920]
+
         # build ui
         toplevel1 = tk.Tk() if master is None else tk.Toplevel(master)
         toplevel1.configure(height=430, width=350)
@@ -104,84 +107,77 @@ class NewprojectApp:
         elif value == "4k":
             screen_res = 4
         print(screen_res)
-        
-        
-        
+
     def on_button_char(self):
-        global selected_char_val
         global char_val
         global a
         global b
-        global piss
         selected_char_val = self.combobox2.get()
-        #hehe....piss var 
-        if selected_char_val == 'slot1':
-            piss = [580, a]
-        elif selected_char_val == 'slot2':
-            piss = [660, a]
-        elif selected_char_val == 'slot3':
-            piss = [750, a]
-        elif selected_char_val == 'slot4':
-            piss = [830, a]
-        elif selected_char_val == 'slot5':
-            piss = [910, a]
-        elif selected_char_val == 'slot6':
-            piss = [b, a]
-        elif selected_char_val == 'slot7':
-            piss = [1080, a]
-        elif selected_char_val == 'slot8':
-            piss = [1170, a]
-        elif selected_char_val == 'slot9':
-            piss = [1250, a]
-        elif selected_char_val == 'slot10':
-            piss = [1350, a]
-        elif selected_char_val == 'slot11':
-            piss = [580, b]
-        elif selected_char_val == 'slot12':
-            piss = [660, b]
-        elif selected_char_val == 'slot13':
-            piss = [750, b]
-        elif selected_char_val == 'slot14':
-            piss = [830, b]
-        elif selected_char_val == 'slot15':
-            piss = [910, b]
-        elif selected_char_val == 'slot16':
-            piss = [b, b]
-        elif selected_char_val == 'slot17':
-            piss = [1080, b]
-        elif selected_char_val == 'slot18':
-            piss = [1170, b]
-        elif selected_char_val == 'slot19':
-            piss = [1250,b]
-        elif selected_char_val == 'slot20':
-            piss = [1350,b]
-        print(piss)
 
+        if selected_char_val == 'slot1':
+            self.select_agent_pos = [580, a]
+        elif selected_char_val == 'slot2':
+            self.select_agent_pos = [660, a]
+        elif selected_char_val == 'slot3':
+            self.select_agent_pos = [750, a]
+        elif selected_char_val == 'slot4':
+            self.select_agent_pos = [830, a]
+        elif selected_char_val == 'slot5':
+            self.select_agent_pos = [910, a]
+        elif selected_char_val == 'slot6':
+            self.select_agent_pos = [b, a]
+        elif selected_char_val == 'slot7':
+            self.select_agent_pos = [1080, a]
+        elif selected_char_val == 'slot8':
+            self.select_agent_pos = [1170, a]
+        elif selected_char_val == 'slot9':
+            self.select_agent_pos = [1250, a]
+        elif selected_char_val == 'slot10':
+            self.select_agent_pos = [1350, a]
+        elif selected_char_val == 'slot11':
+            self.select_agent_pos = [580, b]
+        elif selected_char_val == 'slot12':
+            self.select_agent_pos = [660, b]
+        elif selected_char_val == 'slot13':
+            self.select_agent_pos = [750, b]
+        elif selected_char_val == 'slot14':
+            self.select_agent_pos = [830, b]
+        elif selected_char_val == 'slot15':
+            self.select_agent_pos = [910, b]
+        elif selected_char_val == 'slot16':
+            self.select_agent_pos = [b, b]
+        elif selected_char_val == 'slot17':
+            self.select_agent_pos = [1080, b]
+        elif selected_char_val == 'slot18':
+            self.select_agent_pos = [1170, b]
+        elif selected_char_val == 'slot19':
+            self.select_agent_pos = [1250,b]
+        elif selected_char_val == 'slot20':
+            self.select_agent_pos = [1350,b]
+        print(self.select_agent_pos)
 
     def on_lock_in(self):
         global screen_res
         global char_val
-        global selected_char_val
-        global pos
-        global piss
-        #lets just add all the fucking variables while we're at it until it works -_-
+
+        selected_char_val  = self.combobox2.get()
+
+        # TODO: Do math to make program able to work on screens with different resolutions
         if screen_res == 1:
-            pos = [x * 1 for x in piss]
-            print("screen res is:", screen_res, selected_char_val, piss, pos)
+            pos = [x * 1 for x in self.select_agent_pos]
+            print(f"Screen res is: {screen_res} Selected char val is: {selected_char_val} \"select_agent_pos\" value is: {self.select_agent_pos} New position is: {pos}")
         elif screen_res == 2:
-            pos = [x * 2 for x in piss]
-            print("screen_res is", screen_res, selected_char_val, piss, pos)
+            pos = [x * 2 for x in self.select_agent_pos]
+            print(f"Screen res is: {screen_res} Selected char val is: {selected_char_val} \"select_agent_pos\" value is: {self.select_agent_pos} New position is: {pos}")
         elif screen_res == 4:
-            pos = [x * 4 for x in piss]
-            print("screen_res is", screen_res,"selected char val is", selected_char_val,"piss value is", piss,"new position is", pos)
+            pos = [x * 4 for x in self.select_agent_pos]
+            print(f"Screen res is: {screen_res} Selected char val is: {selected_char_val} \"select_agent_pos\" value is: {self.select_agent_pos} New position is: {pos}")
         else:
-            print("nothing here")
-######################
+            print("Screen resolution wasn't set!")
 #loop#
-        i = 1
         time.sleep(5)
         for i in range (10000):
-            pyautogui.moveTo(piss)
+            pyautogui.moveTo(self.select_agent_pos)
             pyautogui.click()
             pyautogui.moveTo(select_agent)
             pyautogui.click()
