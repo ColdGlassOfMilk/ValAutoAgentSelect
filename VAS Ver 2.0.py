@@ -51,7 +51,7 @@ class NewprojectApp:
         toplevel1 = tk.Tk() if master is None else tk.Toplevel(master)
         toplevel1.configure(height=430, width=350)
         toplevel1.geometry("430x350")
-        toplevel1.wm_title("Valorant Auto Select Ver: 1.0")
+        toplevel1.wm_title("Valorant Auto Select Ver: 2.0")
 
         self.combobox1 = ttk.Combobox(toplevel1)
         self.combobox1.configure(values=["1080p", "1440p", "4k"])
